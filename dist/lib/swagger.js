@@ -927,7 +927,6 @@
         }
       }
     }
-
     req = new SwaggerRequest(this.method, this.urlify(args), params, opts, callback, error, this);
     if (opts.mock != null) {
       return req;
@@ -980,7 +979,7 @@
     var queryParams = "";
     for (var i = 0; i < params.length; i++) {
       var param = params[i];
-      if(param.paramType === 'query') {
+      if((param.paramType === 'query') && (typeof args[param.name] !== 'undefined')) {
         if (queryParams !== '')
           queryParams += '&';    
         if (Array.isArray(param)) {
